@@ -4,7 +4,8 @@ const SearchBar = (props) => {
   const searchInput = useRef();
   const submitHandler = (e) => {
     e.preventDefault();
-    props.setSearchTerm(searchInput.current.value);
+    const searchTerm = searchInput.current.value.split(" ").join("-");
+    props.setSearchTerm(searchTerm);
   };
   return (
     <form onSubmit={submitHandler}>
