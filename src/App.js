@@ -17,6 +17,7 @@ function App() {
 
   useEffect(() => {
     if (searchTerm !== "") {
+      setResults(null);
       axios({
         url: searchAPI(searchTerm),
         method: "GET",
@@ -25,6 +26,11 @@ function App() {
         },
       })
         .then((response) => {
+          console.log(response.data.results);
+          if (response.data.results.length < 1) {
+            setError(true);
+            return;
+          }
           setError(null);
           setResults(response.data.results);
         })
