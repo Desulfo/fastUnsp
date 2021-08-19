@@ -26,7 +26,6 @@ function App() {
         },
       })
         .then((response) => {
-          console.log(response.data.results);
           if (response.data.results.length < 1) {
             setError(true);
             return;
